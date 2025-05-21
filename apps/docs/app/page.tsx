@@ -1,102 +1,136 @@
-import Image, { type ImageProps } from "next/image";
-import { Button } from "@repo/ui/button";
-import styles from "./page.module.css";
+import Image from "next/image";
+import Section from "@repo/ui/section";
+import { DischargeSummary, PatientDataType } from "./types";
+import { mockDischargeResponse } from "./mock";
 
-type Props = Omit<ImageProps, "src"> & {
-  srcLight: string;
-  srcDark: string;
+type PatientDetailsProps = {
+  patientData: PatientDataType;
 };
 
-const ThemeImage = (props: Props) => {
-  const { srcLight, srcDark, ...rest } = props;
+type PatientFieldProps = {
+  icon: string;
+  label: string;
+  value: string;
+  isLastField?: boolean;
+};
 
+const PatientField = ({
+  icon,
+  label,
+  value,
+  isLastField = false,
+}: PatientFieldProps) => (
+  <div
+    className={`flex flex-col gap-2.5 ${!isLastField ? "md:border-e md:border-border-secondary" : ""}`}
+  >
+    <span className="flex items-center text-text-secondary gap-2.5">
+      <div className="p-1 border rounded-lg">
+        <Image alt="section icon" src={icon} width={16} height={16} />
+      </div>
+      <span className="font-semibold">{label}</span>
+    </span>
+    <span data-testid={label}>{value}</span>
+  </div>
+);
+
+function PatientDetails({ patientData }: PatientDetailsProps) {
   return (
-    <>
-      <Image {...rest} src={srcLight} className="imgLight" />
-      <Image {...rest} src={srcDark} className="imgDark" />
-    </>
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 p-3 text-base">
+      <PatientField
+        icon="/identification-badge.svg"
+        label="MRN"
+        value={patientData.person_unified_identifier}
+      />
+      <PatientField
+        icon="/calendar.svg"
+        label="Date Of Birth"
+        value={`${(new Date(patientData.birth_date), "dd MMM yyyy")} (Age:${(new Date(), new Date(patientData.birth_date))})`}
+      />
+      <PatientField
+        icon="/gender-female.svg"
+        label="Gender"
+        value={patientData.gender}
+      />
+      <PatientField
+        icon="/flag-02.svg"
+        label="Nationality"
+        value={patientData.nationality}
+        isLastField
+      />
+    </div>
   );
+}
+
+type AdmissionDetailsProps = {
+  admissionData: DischargeSummary["admissionDetails"];
 };
+
+const AdmissionField = ({
+  label,
+  value,
+}: {
+  label: string;
+  value: string | null;
+}) => (
+  <p>
+    <span className="text-text-secondary font-semibold">{label}:</span>&nbsp;
+    {value || "N/A"}
+  </p>
+);
+
+function AdmissionDetails({ admissionData }: AdmissionDetailsProps) {
+  const {
+    hospitalName,
+    department,
+    admissionDateTime,
+    dischargeDateTime,
+    admissionType,
+  } = admissionData;
+  return (
+    <div className="flex flex-col gap-3 p-3 text-base">
+      <AdmissionField label="Hospital name" value={hospitalName} />
+      <AdmissionField label="Department" value={department} />
+      <AdmissionField
+        label="Admission date and time"
+        value={admissionDateTime}
+      />
+      <AdmissionField
+        label="Discharge date and time"
+        value={dischargeDateTime}
+      />
+      <AdmissionField label="Admission type" value={admissionType} />
+    </div>
+  );
+}
 
 export default function Home() {
+  const {
+    patient_data: patientData,
+    discharge_summary: { admissionDetails },
+  } = mockDischargeResponse;
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <ThemeImage
-          className={styles.logo}
-          srcLight="turborepo-dark.svg"
-          srcDark="turborepo-light.svg"
-          alt="Turborepo logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>apps/docs/app/page.tsx</code>
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new/clone?demo-description=Learn+to+implement+a+monorepo+with+a+two+Next.js+sites+that+has+installed+three+local+packages.&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F4K8ZISWAzJ8X1504ca0zmC%2F0b21a1c6246add355e55816278ef54bc%2FBasic.png&demo-title=Monorepo+with+Turborepo&demo-url=https%3A%2F%2Fexamples-basic-web.vercel.sh%2F&from=templates&project-name=Monorepo+with+Turborepo&repository-name=monorepo-turborepo&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fturborepo%2Ftree%2Fmain%2Fexamples%2Fbasic&root-directory=apps%2Fdocs&skippable-integrations=1&teamSlug=vercel&utm_source=create-turbo"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://turborepo.com/docs?utm_source"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+    <section className="flex flex-col bg-background-primary rounded-3xl">
+      <div className="flex bg-background-primary pt-8 pb-6 sticky -top-0 z-20">
+        <div className="flex flex-col flex-1 gap-6">
+          <h2 className="text-2xl font-semibold">Discharge Summary</h2>
         </div>
-        <Button appName="docs" className={styles.secondary}>
-          Open alert
-        </Button>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com/templates?search=turborepo&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://turborepo.com?utm_source=create-turbo"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to turborepo.com →
-        </a>
-      </footer>
-    </div>
+      </div>
+      <div className="flex gap-8">
+        <section className="flex flex-col gap-6 w-full">
+          <Section
+            title="Patient Demographic Data"
+            icon="/file-attachement.svg"
+          >
+            {patientData && <PatientDetails patientData={patientData} />}
+          </Section>
+
+          <Section title="Admission Details" icon="/file-check-02.svg">
+            {admissionDetails && (
+              <AdmissionDetails admissionData={admissionDetails} />
+            )}
+          </Section>
+        </section>
+      </div>
+    </section>
   );
 }
