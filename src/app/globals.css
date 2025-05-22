@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  -ms-overflow-style: none;
+
+  scroll-behavior: smooth;
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+@theme {
+  /* Text Colors */
+  --color-text-primary: hsl(210, 9%, 13%); /* #1D2023 */
+  --color-text-secondary: hsl(211, 10%, 43%); /* #626C77 */
+  --color-text-tertiary: hsl(210, 9.37%, 62.35%); /* #969FA8 */
+  --color-text-quaternary: hsl(216, 3%, 76%); /* #BCC3D0 */
+  --color-text-inverted: hsla(210, 9%, 13%, 1); /* #1D2023 */
+  --color-text-positive: hsla(137, 82%, 38%, 1); /* #12B23F */
+  --color-text-negative: hsla(15, 89%, 45%, 1); /* #D8400C */
+  --color-text-primary-link: hsla(210, 9%, 13%, 1); /* #0070E5 */
+  --color-text-visited-link: hsla(300, 42%, 38%, 1); /* #883888 */
+  --color-text-primary-link-inverted: hsla(203, 97%, 63%, 1); /* #45B6FC */
+  --color-text-secondary-link: hsla(211, 10%, 43%, 1); /* #626C77*/
+  --color-text-inactive-tabbar: hsla(213, 8%, 47%, 1); /* #6E7782*/
+  --color-text-link: hsl(211, 100%, 45%, 1); /* #0070E5*/
+  --color-text-tooltip: #475467;
+
+  /* Background Colors */
+  --color-background-primary: hsl(0, 0%, 100%); /* #FFFFFF */
+  --color-background-secondary: hsl(220, 60%, 97.06%); /* #F3F6FC */
+  --color-background-disabled: hsl(240, 27%, 98%); /* #F8F8F8 */
+  --color-background-tertiary: #f9fafb; /* #FFFFFF */
+  --color-background-quaternary: hsl(216, 6%, 95%); /* #F2F3F7 */
+  --color-background-slider: hsl(216, 3%, 76%); /* #BCC3D0 */
+  --color-background-primary-elevated: hsl(0, 0%, 100%); /* #FFFFFF */
+  --color-background-hover: #f7f7f8; /* #FFFFFF */
+  --color-background-stroke-disabled: #bcc3d040;
+
+  /* Control Colors */
+  --color-control-primary: hsl(350, 100%, 50%); /* #FF0032 */
+  --color-control-secondary: hsl(210, 9%, 11%); /* #1D2023 */
+  --color-control-tertiary: hsl(219, 18%, 78%, 0.5); /* #BCC3D080*/
+
+  /* Accent Colors */
+  --color-accent-primary: hsl(203, 100%, 57%); /* #45B6FC */
+  --color-accent-secondary: hsl(140, 61%, 37%); /* #26CD58 */
+
+  /* Brand Color */
+  --color-brand-primary: hsl(227, 79%, 66%); /* #4F6FE0 */
+
+  /* Warning and Negative Colors */
+  --color-warning: hsl(42, 89%, 60%); /* #FAC031 */
+  --color-negative: hsl(12, 89%, 60%); /* #F95721 */
+
+  /* Visited Link Color */
+  --color-visited-link: hsl(300, 46%, 33%); /* #883888 */
+
+  /* Gradient Colors */
+  --color-gradient-start: hsl(210, 100%, 78%); /* #9BD5FF */
+  --color-gradient-mid: hsl(250, 100%, 74%); /* #9B93FF */
+  --color-gradient-end: hsl(240, 100%, 65%); /* #7C86FE */
+
+  /* Border */
+  --color-border-primary: hsl(219, 18%, 78%, 0.5); /* #BCC3D080*/
+  --color-border-secondary: #eaecf0;
+  --color-border-tertiary: #d0d5dd;
+
+  /* Icons */
+  --color-icons-tertiary: hsl(210, 10%, 76%); /* #BBC1C7 */
+}
+
+:root {
+  /* Text Colors */
+  --color-text-primary: hsl(210, 9%, 13%); /* #1D2023 */
+  --color-text-secondary: hsl(211, 10%, 43%); /* #626C77 */
+  --color-text-tertiary: hsl(210, 9.37%, 62.35%); /* #969FA8 */
+  --color-text-quaternary: hsl(216, 3%, 76%); /* #BCC3D0 */
+  --color-text-inverted: hsla(210, 9%, 13%, 1); /* #1D2023 */
+  --color-text-positive: hsla(137, 82%, 38%, 1); /* #12B23F */
+  --color-text-negative: hsla(15, 89%, 45%, 1); /* #D8400C */
+  --color-text-primary-link: hsla(210, 9%, 13%, 1); /* #0070E5 */
+  --color-text-visited-link: hsla(300, 42%, 38%, 1); /* #883888 */
+  --color-text-primary-link-inverted: hsla(203, 97%, 63%, 1); /* #45B6FC */
+  --color-text-secondary-link: hsla(211, 10%, 43%, 1); /* #626C77*/
+  --color-text-inactive-tabbar: hsla(213, 8%, 47%, 1); /* #6E7782*/
+  --color-text-link: hsl(211, 100%, 45%, 1); /* #0070E5*/
+  --color-text-tooltip: #475467;
+
+  /* Background Colors */
+  --color-background-primary: hsl(0, 0%, 100%); /* #FFFFFF */
+  --color-background-secondary: hsl(220, 60%, 97.06%); /* #F3F6FC */
+  --color-background-disabled: hsl(240, 27%, 98%); /* #F8F8F8 */
+  --color-background-tertiary: #f9fafb; /* #FFFFFF */
+  --color-background-quaternary: hsl(216, 6%, 95%); /* #F2F3F7 */
+  --color-background-slider: hsl(216, 3%, 76%); /* #BCC3D0 */
+  --color-background-primary-elevated: hsl(0, 0%, 100%); /* #FFFFFF */
+  --color-background-hover: #f7f7f8; /* #FFFFFF */
+  --color-background-stroke-disabled: #bcc3d040;
+
+  /* Control Colors */
+  --color-control-primary: hsl(350, 100%, 50%); /* #FF0032 */
+  --color-control-secondary: hsl(210, 9%, 11%); /* #1D2023 */
+  --color-control-tertiary: hsl(219, 18%, 78%, 0.5); /* #BCC3D080*/
+
+  /* Accent Colors */
+  --color-accent-primary: hsl(203, 100%, 57%); /* #45B6FC */
+  --color-accent-secondary: hsl(140, 61%, 37%); /* #26CD58 */
+
+  /* Brand Color */
+  --color-brand-primary: hsl(227, 79%, 66%); /* #4F6FE0 */
+
+  /* Warning and Negative Colors */
+  --color-warning: hsl(42, 89%, 60%); /* #FAC031 */
+  --color-negative: hsl(12, 89%, 60%); /* #F95721 */
+
+  /* Visited Link Color */
+  --color-visited-link: hsl(300, 46%, 33%); /* #883888 */
+
+  /* Gradient Colors */
+  --color-gradient-start: hsl(210, 100%, 78%); /* #9BD5FF */
+  --color-gradient-mid: hsl(250, 100%, 74%); /* #9B93FF */
+  --color-gradient-end: hsl(240, 100%, 65%); /* #7C86FE */
+
+  /* Border */
+  --color-border-primary: hsl(219, 18%, 78%, 0.5); /* #BCC3D080*/
+  --color-border-secondary: #eaecf0;
+  --color-border-tertiary: #d0d5dd;
+
+  /* Icons */
+  --color-icons-tertiary: hsl(210, 10%, 76%); /* #BBC1C7 */
+}
+
+.dark {
+  /* Text Colors */
+  --color-text-primary: hsl(0, 0%, 98%); /* #FAFAFA */
+  --color-text-secondary: hsl(216, 5%, 60%); /* #969FA8 */
+  --color-text-tertiary: hsl(210, 9%, 39%); /* #626C77 */
+  --color-text-quaternary: hsl(210, 4%, 20%); /* #7F8C99 */
+  --color-text-inverted: hsla(210, 9%, 13%, 1);
+  --color-text-positive: hsla(133, 63%, 66%, 1);
+  --color-text-negative: hsla(15, 100%, 75%, 1);
+  --color-text-primary-link: hsla(203, 97%, 63%, 1);
+  --color-text-visited-link: hsla(300, 42%, 38%, 1);
+  --color-text-primary-link-inverted: hsla(211, 100%, 45%, 1);
+  --color-text-secondary-link: hsla(210, 9%, 62%, 1);
+  --color-text-inactive-tabbar: #ffffff;
+  --color-text-link: hsla(203, 97%, 63%, 1); /* #45B6FC */
+
+  /* Background Colors */
+  --color-background-primary: hsl(0, 0%, 0%); /* #000000 */
+  --color-background-secondary: hsl(210, 9%, 11%); /* #1D2023 */
+  --color-background-disabled: hsl(211, 10%, 43%); /* #626C7726 */
+  --color-background-tertiary: hsla(207, 9%, 19%, 1); /* #2C3135 */
+  --color-background-quaternary: hsla(211, 10%, 43%, 0.25); /* #626C7725 */
+  --color-background-slider: hsl(216, 3%, 56%); /* #8D969F */
+  --color-background-primary-elevated: hsl(210, 9%, 11%); /* #1D2023 */
+  --color-background-hover: #f2f3f733;
+  /* Control Colors */
+  --color-control-primary: hsl(350, 100%, 50%); /* #FF0032 */
+  --color-control-secondary: hsl(210, 9%, 11%); /* #1D2023 */
+  --color-control-tertiary: hsl(210, 11%, 55%, 0.35); /* ##7F8C9959 */
+
+  /* Accent Colors */
+  --color-accent-primary: hsl(204, 100%, 50%); /* #007CFF */
+  --color-accent-secondary: hsl(140, 61%, 47%); /* #74DF8B */
+
+  /* Brand Color */
+  --color-brand-primary: hsl(227, 79%, 66%); /* #4F6FE0 */
+  --color-brand-secondary: hsl(227, 79%, 56%); /* #0070E5 */
+  /* Warning and Negative Colors */
+  --color-warning: hsl(42, 89%, 70%); /* #FAD67D */
+  --color-negative: hsl(12, 89%, 70%); /* #FA8A64 */
+
+  /* Visited Link Color */
+  --color-visited-link: hsl(300, 46%, 33%); /* #883888 */
+
+  /* Gradient Colors */
+  --color-gradient-start: hsl(210, 100%, 78%); /* #9BD5FF */
+  --color-gradient-mid: hsl(250, 100%, 74%); /* #9B93FF */
+  --color-gradient-end: hsl(240, 100%, 65%); /* #7C86FE */
+
+  /* Border */
+  --color-border-primary: hsl(210, 9%, 62%, 1); /* #969FA8*/
+
+  /* Icons */
+
+  --color-icons-tertiary: hsl(210, 10%, 76%); /* #BBC1C7 */
+}

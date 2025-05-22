@@ -1,0 +1,235 @@
+import { DischargeResponseType } from "./app/types";
+
+export const mockDischargeResponse: DischargeResponseType = {
+  id: 1,
+  patient_id: "P123456",
+  created_at: "2025-04-01T10:00:00Z",
+  updated_at: "2025-04-20T12:30:00Z",
+  patient_data: {
+    gender: "Male",
+    height: "175",
+    weight: "70",
+    birth_date: "1980-05-15",
+    nationality: "Indian",
+    patient_name: "A B",
+    discharge_date: "2025-04-20",
+    registration_date: "2025-03-15",
+    person_unified_identifier: "UID123456789",
+    allergy: [
+      { allergy: "Penicillin", severity: "High", substance: "Penicillin" },
+    ],
+    surgery_details: {
+      consciousLevel: "Alert",
+      radiology: ["Chest X-Ray: Normal", "CT Abdomen: Minor abnormalities"],
+      lab: [
+        {
+          unit: "mg/dL",
+          task_assay: "Glucose",
+          result_text: "Normal",
+          result_value: "90",
+          result_status: "Final",
+          completed_date: "2025-04-19T08:00:00Z",
+          order_category: "Biochemistry",
+          order_mnemonic: "GLU",
+          order_sub_category: "Metabolic",
+          result_value_alpha: "Normal",
+          result_value_numeric: 90,
+        },
+      ],
+      visit: [
+        {
+          building: "Main Hospital",
+          facility: "General Ward",
+          discharge_date: "2025-04-20",
+          encounter_type: "Inpatient",
+          medical_service: "General Medicine",
+          registration_date: "2025-03-15",
+          admittedFrom: "Emergency",
+        },
+      ],
+      diagnosis: [
+        {
+          diagnosis_code: "E11.9",
+          diagnosis_date: "2025-03-15",
+          encounter_type: "Inpatient",
+          medical_service: "Endocrinology",
+          diagnosis_display: "Type 2 diabetes mellitus without complications",
+          diagnosed_personnel: "Dr. A. Verma",
+          diagnosis_code_source: "ICD-10",
+          diagnosis_description: "Diabetes Type 2",
+        },
+      ],
+      surgery: {
+        building: "Surgical Block",
+        facility: "Operating Theater 2",
+        reg_dt_tm: "2025-03-20T09:00:00Z",
+        case_level: "Elective",
+        department: "Surgery",
+        med_service: "General Surgery",
+        proc_dur_min: "120",
+        order_mnemonic: "APPENDECTOMY",
+        primary_surgeon: "Dr. R. Singh",
+        proc_start_dt_tm: "2025-03-20T09:15:00Z",
+        operation_room: "OR-2",
+        surgery_speciality: "Gastrointestinal",
+      },
+      warning_signs: ["Fever above 101°F", "Severe abdominal pain"],
+      chief_complaint: ["Abdominal pain", "Nausea"],
+      discharge_advice: [
+        "Follow a soft diet",
+        "Avoid heavy lifting for 2 weeks",
+      ],
+      surgery_medication: [
+        {
+          order_date: "2025-03-20 09:16:45",
+          completed_date: "2025-03-25 09:16:45",
+          medication_name: "Ceftriaxone",
+        },
+      ],
+      discharge_medication: [
+        {
+          order_date: "2025-04-20 09:16:45",
+          completed_date: "2025-04-20 09:16:45",
+          medication_name: "Paracetamol",
+        },
+      ],
+      lifestyle_recommendations: [
+        "Walk 30 minutes daily",
+        "Avoid sugar-rich food",
+      ],
+    },
+    previous_medical_history: {
+      diabetes: {
+        lab: [
+          {
+            unit: "mmol/L",
+            task_assay: "HbA1c",
+            result_text: "7.2",
+            result_value: "7.2",
+            result_status: "Final",
+            completed_date: "2024-12-01T10:00:00Z",
+            order_category: "Endocrinology",
+            order_mnemonic: "HBA1C",
+            order_sub_category: "Chronic",
+            result_value_alpha: "High",
+            result_value_numeric: 7.2,
+          },
+        ],
+        diagnosis: [
+          {
+            diagnosis_code: "E11.9",
+            diagnosis_date: "2024-11-15",
+            encounter_type: "Outpatient",
+            medical_service: "Endocrinology",
+            diagnosis_display: "Type 2 diabetes mellitus",
+            diagnosed_personnel: "Dr. A. Verma",
+            diagnosis_code_source: "ICD-10",
+            diagnosis_description: "Chronic Type 2 Diabetes",
+          },
+        ],
+        medication: [
+          {
+            name: "Metformin",
+            dosage: "500mg",
+            frequency: "Twice daily",
+            startDate: "2024-11-15",
+            endDate: "2025-04-01",
+          },
+        ],
+      },
+    },
+    home_medications: ["Metformin", "Atorvastatin"],
+  },
+  discharge_summary: {
+    patientDetails: {
+      fullName: "A B",
+      medicalRecordNumber: "MRN123456",
+      dateOfBirth: "1980-05-15",
+      age: "44",
+      nationality: "Indian",
+      gender: "Male",
+      height: "175",
+      weight: "70",
+    },
+    admissionDetails: {
+      hospitalName: "City General Hospital",
+      department: "General Surgery",
+      admissionDateTime: "2025-03-15T08:00:00Z",
+      dischargeDateTime: "2025-04-20T12:00:00Z",
+      admissionType: "Emergency",
+    },
+    physicianDetails: {
+      referringPhysician: "Dr. K. Sharma",
+      attendingPhysician: "Dr. R. Singh",
+      title: "Consultant Surgeon",
+    },
+    admissionDiagnosisIcd10: ["K35.2"],
+    pastMedicalHistory: {
+      pastMedicalCondition: ["Diabetes", "Hypertension"],
+      allergies: ["Penicillin"],
+    },
+    homeMedications: [
+      {
+        name: "Metformin",
+        dosage: "500mg",
+        frequency: "Twice daily",
+        startDate: "2024-11-15",
+        endDate: "2025-04-01",
+      },
+      {
+        name: "Atorvastatin",
+        dosage: "10mg",
+        frequency: "Once daily",
+        startDate: "2024-12-01",
+        endDate: "2025-04-01",
+      },
+    ],
+    admissionCondition: "Stable",
+    hospitalCourse: {
+      latestLabResults: [
+        { observation: "HbA1c: 7.2", normal: false },
+        { observation: "Glucose: 90 mg/dL", normal: true },
+      ],
+      latestRadiologyResults: ["CT Abdomen showed mild inflammation"],
+      medicationsAdministered: [
+        {
+          name: "Ceftriaxone",
+          dosage: "1g",
+          frequency: "Once daily",
+          startDate: "2025-03-20",
+          endDate: "2025-03-25",
+        },
+      ],
+      proceduresPerformed: "Appendectomy",
+      physicalExamination: ["BP 120/80", "Pulse 72", "Abdomen soft"],
+      latestVitals: ["Temp 98.6°F", "SpO2 98%"],
+    },
+    discharge: {
+      dischargeDiagnosisIcd10: ["K35.2"],
+      dischargePlan: {
+        dischargeCondition: ["Stable"],
+        followupAppointment: ["2025-05-05 at Surgery OPD"],
+        warningSigns: ["Fever >101°F", "Severe abdominal pain"],
+        dischargeDestination: ["Home"],
+      },
+      dischargeOrders: ["Complete antibiotic course", "Follow soft diet"],
+      dischargeMedications: [
+        {
+          name: "Paracetamol",
+          dosage: "500mg",
+          frequency: "Thrice daily",
+          startDate: "2025-04-20",
+          endDate: "2025-04-27",
+        },
+      ],
+      dischargeNote: {
+        note: "Patient discharged in stable condition after successful appendectomy.",
+      },
+    },
+    emergencyContact: {
+      hospitalEmergencyNumber: "1800-111-222",
+      onCallDoctor: "Dr. A. Mehra",
+    },
+    procedureLocation: "OR-2, Surgical Block",
+  },
+};
